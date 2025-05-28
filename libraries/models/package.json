@@ -1,0 +1,22 @@
+{
+  "name": "@patrik-svensson/models",
+  "version": "1.0.30",
+  "main": "./dist/index.js",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "The models used in the application",
+  "dependencies": {
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12"
+  }
+}

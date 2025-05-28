@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "client",
+    "slug": "client",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "com.anonymous.fashion-inspiration",
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist"
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.anonymous.client"
+    },
+    "web": {},
+    "plugins": ["@react-native-google-signin/google-signin"]
+  }
+}

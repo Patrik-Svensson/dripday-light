@@ -1,0 +1,10 @@
+export { IPost } from "./IPost.js";
+export { IUser } from "./IUser.js";
+export { IProduct } from "./IProduct.js";
+export { IStyleboard } from "./IStyleboard.js";
+export { IProductMatch } from "./IProductMatch.js";
+export { IProductFound } from "./IProductFound.js";
+export { IProductFilterStats } from "./IProductFilterStats.js";
+export { IImages } from "./IImages.js";
+export { IContent } from "./IContent.js";
+export { IMarket } from "./IMarket.js";
