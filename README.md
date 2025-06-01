@@ -2,7 +2,7 @@
 
 **Dripday Light** is a partial implementation of Dripday's architectural design. This repository includes the following core components:
 
-- 🌐 **Web Frontend**  
+- 🌐 **Mobile Frontend**  
   A user-facing mobile interface for interacting with the platform.
 
 - ⚙️ **Backend API**  
@@ -20,12 +20,12 @@ This project serves as a simplified and modular version of the full Dripday arch
 
 ## Technologies Used
 
-- **Frontend**: TypeScript, React Native  
+- **Mobile Frontend**: TypeScript, React Native  
 - **Backend**: TypeScript, Node.js, Express  
 - **Embedding Service**: Python, Flask, OpenAI CLIP model
 
 ## Architecture
 
-The diagram below illustrates the overall architecture of the Dripday system. This repository implements key components, including the **Client Frontend Web**, **Client API**, and the **CLIP Embedder**.
+The diagram below illustrates the overall architecture of the Dripday system. This repository implements key components, including the **Client Frontend Mobile**, **Client API**, and the **CLIP Embedder**.
 
 ![Dripday Architecture](./architecture.jpg)
