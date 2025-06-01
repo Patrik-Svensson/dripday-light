@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.webDeployment.name }}
+spec:
+  replicas: {{ .Values.webDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.webDeployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.webDeployment.name }}
+    spec:
+      containers:
+        - name: {{ .Values.webDeployment.name }}
+          image: {{ .Values.webDeployment.image.repository }}:{{ .Values.webDeployment.image.tag }}
+          ports:
+            - containerPort: {{ .Values.webDeployment.containerPort }}
+          env:
+            - name: MODE
+              value: {{ .Values.webDeployment.env.MODE }}
+      imagePullSecrets:
+        {{ range .Values.webDeployment.imagePullSecrets }}
+        - name: {{ .name }}
+        {{ end }}

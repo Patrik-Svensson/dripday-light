@@ -1,0 +1,57 @@
+apiService:
+  name: dripday-api-user
+  type: LoadBalancer
+  annotations:
+    cloud.google.com/load-balancer-ipv4: "x.x.x.x"  # Redacted public IP
+  port: 3000
+  targetPort: 3000
+
+webService:
+  name: dripday-web-app-service
+  selector:
+    app: dripday-web-app
+  port: 80
+  targetPort: 8080
+  type: LoadBalancer
+  loadBalancerIP: x.x.x.x  # Redacted public IP
+
+apiDeployment:
+  name: dripday-api-user
+  replicas: 1
+  image:
+    repository: gcr.io/myproject/dripday-api-user  # Redacted private registry path
+    tag: latest
+  containerPort: 3000
+  env:
+    NODE_ENV: prod
+  imagePullSecrets:
+    - name: regcred
+
+webDeployment:
+  name: dripday-web-app
+  replicas: 1
+  image:
+    repository: gcr.io/myproject/dripday-web-app  # Redacted private registry path
+    tag: latest
+  containerPort: 8080
+  env:
+    MODE: prod
+  imagePullSecrets:
+    - name: regcred
+
+clipDeployment:
+  name: dripday-clip-service
+  replicas: 1
+  image:
+    repository: gcr.io/myproject/dripday-clip-service  # Redacted private registry path
+    tag: latest
+  imagePullSecrets:
+    - name: regcred
+
+ingress-nginx:
+  controller:
+    service:
+      loadBalancerIP: x.x.x.x  # Redacted public IP
+
+certManager:
+  email: you@example.com  # Use a generic or non-sensitive email

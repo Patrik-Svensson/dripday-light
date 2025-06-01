@@ -1,0 +1,42 @@
+apiService:
+  name: dripday-api
+  type: NodePort
+  nodePort: 32000
+  port: 3000
+  targetPort: 3000
+
+webService:
+  name: dripday-web-service
+  selector:
+    app: dripday-web
+  port: 80
+  targetPort: 8080
+  type: NodePort
+  nodePort: 30080
+
+apiDeployment:
+  name: dripday-api
+  replicas: 1
+  image:
+    repository: gcr.io/myproject/dripday-api  # Redacted project-specific path
+    tag: latest
+  containerPort: 3000
+  env:
+    NODE_ENV: staging
+  imagePullSecrets:
+    - name: regcred
+
+webDeployment:
+  name: dripday-web
+  replicas: 1
+  image:
+    repository: gcr.io/myproject/dripday-web  # Redacted project-specific path
+    tag: latest
+  containerPort: 8080
+  env:
+    MODE: staging
+  imagePullSecrets:
+    - name: regcred
+
+certManager:
+  email: you@example.com  # Use a non-personal email for public repos

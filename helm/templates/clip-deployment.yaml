@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.clipDeployment.name }}
+spec:
+  replicas: {{ .Values.clipDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.clipDeployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.clipDeployment.name }}
+    spec:
+      containers:
+        - name: {{ .Values.clipDeployment.name }}
+          image: {{ .Values.clipDeployment.image.repository }}:{{ .Values.clipDeployment.image.tag }}
+      imagePullSecrets:
+{{ range .Values.apiDeployment.imagePullSecrets }}
+        - name: {{ .name }}
+{{ end }}

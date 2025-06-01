@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.apiDeployment.name }}
+spec:
+  replicas: {{ .Values.apiDeployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.apiDeployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.apiDeployment.name }}
+    spec:
+      containers:
+        - name: {{ .Values.apiDeployment.name }}
+          image: {{ .Values.apiDeployment.image.repository }}:{{ .Values.apiDeployment.image.tag }}
+          ports:
+            - containerPort: {{ .Values.apiDeployment.containerPort }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.apiDeployment.env.NODE_ENV }}
+      imagePullSecrets:
+{{ range .Values.apiDeployment.imagePullSecrets }}
+        - name: {{ .name }}
+{{ end }}
